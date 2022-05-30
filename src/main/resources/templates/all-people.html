@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Student Management System</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Student Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!--    &lt;!&ndash; Navbar links &ndash;&gt;-->
+    <!--    <div class="collapse navbar-collapse" id="collapsibleNavbar">-->
+    <!--        <ul class="navbar-nav">-->
+    <!--            <li class="nav-item">-->
+    <!--                <a class="nav-link" th:href="@{/people_api/people}">Student Management</a>-->
+    <!--            </li>-->
+    <!--        </ul>-->
+    <!--    </div>-->
+</nav>
+
+<div class="container">
+    <div class="row">
+        <h1> List Students </h1>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/people_api/people/new}" class="btn btn-primary btn-sm mb-3"> Add Person</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/people_api/people_example}" class="btn btn-primary btn-sm mb-3"> Add people examples</a>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Pathername</th>
+            <th>Type</th>
+            <th>Group</th>
+        </tr>
+
+
+        <tr th:each="person : ${people}" th:if="${people!=null and !people.empty}">
+            <td th:text="${person.firstName}"></td>
+            <td th:text="${person.lastName}"></td>
+            <td th:text="${person.fatherName}"></td>
+            <td th:text="${person.type}"></td>
+            <td th:text="${person?.getGroup()?.getName()}"></td>
+            <td><a th:href="@{'/people_api/people/newMark?sid='+${person.id}}">Add Marks</a></td>
+            <td><a th:href="@{'/people_api/people/showMarks?sid='+${person.id}}">Show Marks</a></td>
+
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+</body>
+</html>

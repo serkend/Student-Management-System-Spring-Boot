@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Save Student Passport</title>
+</head>
+
+<body>
+<div class="container">
+    <h3>Marks Form</h3>
+    <hr>
+
+    <a th:href="@{/people_api/gpeople}"
+       class="btn btn-primary btn-sm mb-3">
+        Back to Student List
+    </a>
+
+    <p class="h4 mb-4">Save Student Mark</p>
+
+    <form
+            action="#"
+            th:action="@{'/people_api/people/saveMark?sid='+${sid}}"
+            th:object="${mark}"
+            method="POST">
+
+<!--        <div class="col-lg-3">-->
+<!--            <select class="form-control" id="testOrder1" name="testOrder1" th:field="${mark?.getValue()}">-->
+<!--                <option value="">Select Mark</option>-->
+<!--                <option th:each="m : ${markValues}"-->
+<!--                        th:value="${m}"-->
+<!--                        th:text="${m}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
+
+        <input
+                type="text"
+                th:field="*{value}"
+                class="form-control mb-4 col-4"
+                placeholder="Mark Value" />
+
+<!--        <input-->
+<!--                type="text"-->
+<!--                th:field="*{subjName}"-->
+<!--                class="form-control mb-4 col-4"-->
+<!--                placeholder="Subject Name" />-->
+
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href="@{'/people_api/people/showTeachers?sid='+${sid}}" class="btn btn-primary btn-sm mb-3"> Choose teacher</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href="@{'/people_api/people/showSubjects?sid='+${sid}}" class="btn btn-primary btn-sm mb-3"> Choose subject</a>
+            </div>
+        </div>
+
+<!--        <input-->
+<!--                type="text"-->
+<!--                th:field="*{teacherName}"-->
+<!--                class="form-control mb-4 col-4"-->
+<!--                placeholder="Teacher Name" />-->
+
+<!--        <input-->
+<!--                type="text"-->
+<!--                th:field="*{teacherSurname}"-->
+<!--                class="form-control mb-4 col-4"-->
+<!--                placeholder="Teacher Surname" />-->
+
+<!--        <input-->
+<!--                type="text"-->
+<!--                th:field="*{teacherPathername}"-->
+<!--                class="form-control mb-4 col-4"-->
+<!--                placeholder="Teacher Pathername" />-->
+
+<!--        <div class="col-lg-3">-->
+<!--            <select class="form-control" id="testOrder2" name="testOrder2" th:field="${mark?.getSubject()?.getName()}">-->
+<!--                <option value="">Select Mark</option>-->
+<!--                <option th:value="English" th:text="English"></option>-->
+<!--            </select>-->
+<!--        </div>-->
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+</div>
+</body>
+
+</html>
